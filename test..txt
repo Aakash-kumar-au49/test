@@ -1,0 +1,64 @@
+1.
+* Application Layer An application layer is the topmost layer within the TCP/IP model. ...
+* Transport Layer It is responsible for the reliability, flow control, and correction of data that is being sent over the network. ...
+* Internet/Network Layer It is the third layer of the TCP/IP Model and also known as the Network layer. ...
+* Network Access Layer It is the lowest layer of the TCP/IP Model. ..
+
+2.
+ head = reverse(list, undefined);
+
+console.log("Reverse list");
+while (head != undefined) {
+  console.log(head.name);
+  head = head.next;
+}
+
+
+function reverse(list, prev) {
+  // if this is the last node, switch it with previous and return
+  if (list.next == undefined) {
+    list.next = prev;
+    return list;
+  }
+
+  // otherwise, switch it with the reverse of what is next
+  var ret = reverse(list.next, list);
+  list.next = prev;
+  return ret;
+}
+
+3.
+var buildTree = function(inorder, postorder) {
+  const len = postorder.length
+  if (!len) return null
+
+  const rootIndex = len - 1
+  const rootValue = postorder[rootIndex]
+  let i = rootIndex
+  while (inorder[i] !== rootValue) {
+    i--
+  }
+
+  const node = new TreeNode(rootValue)
+  if (i) {
+    node.left = buildTree(inorder.slice(0, i), postorder.slice(0, i))
+  }
+  if (i < rootIndex) {
+    node.right = buildTree(inorder.slice(i + 1), postorder.slice(i, rootIndex))
+  }
+  
+  return node
+};
+
+4.
+Breadth-First Search:
+BFS, Breadth-First Search, is a vertex-based technique for finding the shortest path in the graph. It uses a Queue data structure that follows first in first out. In BFS, one vertex is selected at a time when it is visited and marked then its adjacent are visited and stored in the queue. It is slower than DFS. 
+
+Depth First Search:
+DFS, Depth First Search, is an edge-based technique. It uses the Stack data structure and performs two stages, first visited vertices are pushed into the stack, and second if there are no vertices then visited vertices are popped. 
+
+5.
+O(log(n))
+
+6.
+O(n)
